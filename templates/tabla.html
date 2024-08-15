@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Películas
+{% endblock %}
+{% block head %}
+{{super()}}
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div>
+            <h1>Lista ordenada por</h1><h2>{{ orden }}</h2>
+        </div>
+        <div>
+            <table class="table table-striped">
+                <tr>
+                    <thead class="thead-dark">
+                    <th width="100">Titulo</th>
+                    <th width="300">Direccion</th>
+                    <th width="100">Año</th>
+                    </thead>
+                </tr>
+                {% for pelicula in lista %}
+                <tr>
+                    <td><a href="/pelicula/{{pelicula[1]['id']}}">{{ pelicula[0] }}</a></td>
+                    <td>{{ pelicula[1]['direccion'] }}</td>
+                    <td>{{ pelicula[1]['fecha_estreno'][6:10] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
